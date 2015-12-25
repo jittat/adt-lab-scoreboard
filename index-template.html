@@ -3,9 +3,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <style type="text/css">
+    td {
+      text-align: center;
+    }
+    td.correct {
+      background: green;
+    }
+    td.submitted {
+      background: orange;
+    }
+  </style>
 </head>
 <body>
-<table>
+<table id="score_table">
   <tr>
     <th>User</th>
     {% for t in display_tasks %}
@@ -14,9 +25,9 @@
   </tr>
   {% for user in users %}
     <tr>
-      <td>{{ user.name }}</td>
+      <td width="100px">{{ user.name }}</td>
       {% for t in tasks %}
-        <td>{{ task_status[user.uva_id][t] }}</td>
+        <td class="{% if task_status[user.uva_id][t] == 1 %}correct{% else %}{% if task_status[user.uva_id][t] == -1 %}submitted{% else %}nosubmission{% endif %}{% endif %}">{{ task_status[user.uva_id][t] }}</td>
       {% endfor %}
     </tr>
   {% endfor %}
