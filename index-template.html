@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+<table>
+  <tr>
+    <th>User</th>
+    {% for t in display_tasks %}
+      <th>{{ t.num }}</th>
+    {% endfor %}
+  </tr>
+  {% for user in users %}
+    <tr>
+      <td>{{ user.name }}</td>
+      {% for t in tasks %}
+        <td>{{ task_status[user.uva_id][t] }}</td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
